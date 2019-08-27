@@ -1,0 +1,37 @@
+.backdrop {
+    /*
+    1vh = 1% de la altura del viewport
+    100vh = altura del viewport
+    1vw = 1% del ancho del viewport
+    100vw = ancho del viewport
+    */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.75);
+    /*
+    Cuando varios elementos se superponen, z-order determina cuales cubren a otros. 
+    Un elemento con mayor z-index generalmente cubre a otro menor.
+    */
+    z-index: 50;
+}
+
+.alert-box {
+    position: fixed;
+    top: 30vh;
+    left: 20vw;
+    width: 60vw;
+    padding: 16px;
+    z-index: 100;
+    background: white;
+    /**
+    box-shadow -> Permite proyectar una sombra difuminada en la estructura de casi cualquier elemento
+    */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+
+.alert-box-actions {
+    text-align: right;
+}
