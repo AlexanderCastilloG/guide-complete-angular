@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { throwError, BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 import { User } from './user.model';
 
@@ -21,14 +22,16 @@ export interface AuthResponseData {
 export class AuthService {
 
   private URL = 'https://identitytoolkit.googleapis.com/v1/accounts:';
-  private API_KEY = 'AIzaSyD95b8YXE2Yhoi6nFm1Fe5u2sU1b0jerVw';
+  // private API_KEY = 'AIzaSyD95b8YXE2Yhoi6nFm1Fe5u2sU1b0jerVw';
+  private API_KEY: string;
 
   // BehaviorSubject > parecido a Subject pero con un valor por defecto
   user =  new BehaviorSubject<User>(null);
   private tokenExpirationTimer: any;
 
-  constructor(private http: HttpClient,
-              private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {
+    this.API_KEY = environment.firebaseAPIKey;
+  }
 
   signup(email: string, password: string) {
     return this.http.post<AuthResponseData>(`${this.URL}signUp?key=${this.API_KEY}`,{

@@ -16,7 +16,9 @@ const appRoutes: Routes = [
     {
         path: 'auth',
         loadChildren: () => import('./auth/auth/auth.module').then(m => m.AuthModule)
-    }
+    },
+    // Ruta para manejar si no encuentra ninguna ruta
+    // { path: '**', component: Custom404PageComponente}
 ];
 
 @NgModule({
